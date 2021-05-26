@@ -1,0 +1,120 @@
+.modal{
+    position: relative;
+	width: 100%;
+	height: 100%;
+	z-index: 1;
+    background-color: aqua;
+    display: none;
+}
+
+.modal .modal_bg_shadow{
+	position: fixed;
+	top: 0;
+	left: 0;
+	background: #000;
+	opacity: 0.5;
+	width: 100%;
+	height: 100%;
+	z-index: -1;
+}
+
+.modal .modal-dialog{
+	width: 500px;
+	height: 200px;
+	background: #fff;
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	transform: translate(-50%,-50%);
+	border-radius: 5px;
+}
+ 
+.modal .modal-dialog .modal_closed{
+	position: absolute;
+	top: -25px;
+	right: -25px;
+	width: 50px;
+	height: 50px;
+	background: #363d4e;
+	border-radius: 50%;
+	cursor: pointer;
+}
+
+.wrapper .modal_box .modal_box_wrap .modal_close:before,
+.wrapper .modal_box .modal_box_wrap .modal_close:after{
+	content: "";
+	position: absolute;
+	top: 25px;
+	left: 13px;
+	width: 25px;
+	height: 2px;
+	background: #fff;
+}
+
+.wrapper .modal_box .modal_box_wrap .modal_close:before{
+	transform: rotate(45deg);
+}
+
+.wrapper .modal_box .modal_box_wrap .modal_close:after{
+	transform: rotate(130deg);
+}
+
+.modal .modal-dialog .modal-content{
+    width: 100%;
+	height: 100%;
+}
+
+.modal .modal-dialog .modal-content .modal-header{
+	padding: 10px;
+	border-bottom: 1px solid #e0e0e0;
+	height: 30px;
+}	
+
+.modal .modal-dialog .modal-content .modal-header .modal-title{
+	font-size: 20px;
+    width: fit-content;
+}
+
+.modal .modal-dialog .modal-content .modal-header .modal-btn-x{
+	float:right;
+}	
+
+
+.modal .modal-dialog .modal-content .modal-body{
+	padding: 20px;
+	border-bottom: 1px solid #e0e0e0;
+	height: calc(200px - 150px);
+	font-size: 16px;
+	line-height: 21px;
+}
+
+.modal .modal-dialog .modal-content .modal-footer{
+	padding: 10px;
+	height: 40px;
+}
+
+.modal .modal-dialog .modal-content .modal-footer .modal_btn_grp{
+	display: flex;
+	justify-content: flex-end;
+	align-items: center;
+	height: 100%;
+}
+
+.modal .modal-dialog .modal-content .modal-footer .modal_btn_grp .btn{
+	width: 100px;
+	padding: 10px;
+	border-radius: 5px;
+	text-align: center;
+	cursor: pointer;
+}
+
+.modal .modal-dialog .modal-content .modal-footer .modal_btn_grp .btn.close{
+    margin-left: 10px;
+	background: #363d4e;
+	color: #fff;
+}
+
+.modal .modal-dialog .modal-content .modal-footer .modal_btn_grp .btn.modal-btn-d{
+	border: 1px solid #363d4e;
+	color: #363d4e;
+}

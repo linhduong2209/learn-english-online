@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <link href="/static/stylesheets/main.css" rel="stylesheet"/>
+        <link rel="preconnect" href="https://fonts.gstatic.com">
+        <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@700&display=swap" rel="stylesheet">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    </head>
+    <body>
+        <div class="header"></div>
+        <div class="menu">
+            <div class="menu_item">
+                <a href="/home">Home</a>
+            </div>
+            <div class="menu_item">
+                <a href="/dictionary">Dictionary</a> 
+            </div>
+            <div class="menu_item">
+                <a href="/exams">Exams</a>
+            </div>
+            <div class="menu_logout">
+                <a href="/logout">Logout</a>
+            </div>
+        </div>
+        <div class="content">
+            <div class="search" name="searchf">
+                <input class="search_field" id="input_s" placeholder="Search..." type="search" value="">
+                <button class="search_submit" onclick="myFunction()"><i class="fa fa-search"></i></button>
+            </div>
+        
+        </div>
+        <form method="GET" name="search-form"></form>
+        <script>
+            var input;
+            var sf = document.forms['search-form'];
+            function myFunction() {
+            input = document.getElementById("input_s").value;
+            sf.action = '/dictionary/' + input + "?_method=GET";
+            sf.submit();
+            }
+        </script>
+        
+        <div class="result">
+            <p id="demo"></p>
+        </div>
+    </body>
+</html>

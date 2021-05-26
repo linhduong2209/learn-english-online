@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <link href="/static/stylesheets/main.css" rel="stylesheet"/>
+        <link rel="preconnect" href="https://fonts.gstatic.com">
+        <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@700&display=swap" rel="stylesheet">
+    </head>
+    <body>
+        <div class="header"></div>
+        <div class="menu">
+            <div class="menu_item">
+                <a href="/home">Home</a>
+            </div>
+            <div class="menu_item">
+                User 
+            </div>
+            <div class="menu_item">
+                <a href="/question">Question</a>
+            </div>
+            <div class="menu_logout">
+                <a href="/logout">Logout</a>
+            </div>
+        </div>
+        <div class="content_home">
+            <form class="q_form" method="POST" action="/question/<%=question._id%>?_method=PUT">
+                <label for="id_q">Id:</label><br>
+                <input type="text" id="id_q" name="id_q" size="50" value="<%=question.id_q%>"><br>
+                <label for="description">Description:</label><br>
+                <input type="text" id="description" name="description" size="50" value="<%=question.description%>"><br>
+                <label for="answer1">Answer 1:</label><br>
+                <input type="text" id="answer1" name="answer1" size="50" value="<%=question.answer[0]%>"><br>
+                <label for="answer2">Answer 2:</label><br>
+                <input type="text" id="answer2" name="answer2" size="50" value="<%=question.answer[1]%>"><br>
+                <label for="answer3">Answer 3:</label><br>
+                <input type="text" id="answer3" name="answer3" size="50" value="<%=question.answer[2]%>"><br>
+                <label for="answer4">Answer 4:</label><br>
+                <input type="text" id="answer4" name="answer4" size="50" value="<%=question.answer[3]%>"><br>
+                <label for="correct">Correct:</label><br>
+                <input type="text" id="correct" name="correct" size="50" value="<%=question.correct%>"><br>
+                <br>
+                <input type="submit" value="Submit">
+              </form> 
+              
+        </div>
+    </body>
+
+</html>

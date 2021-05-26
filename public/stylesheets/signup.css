@@ -1,0 +1,88 @@
+body{
+    margin: 0;
+    font-family:'Nunito-SemiBold';
+    font-size: 16px;
+    background-color: #FDCE74;
+}
+@font-face{
+    font-family:'Nunito-SemiBold';
+    src : url(/static/font/Nunito-SemiBold.ttf) format('opentype');
+}
+
+.content {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    padding: 20px;
+    height: 360px;
+    width: 960px;
+    transform: translate(-50%,-50%);
+    background: #FFFF;
+    /* border-radius: 20px; */
+    display: flex;
+    /* flex-direction: column; */
+    align-items: center;
+}
+
+.content .content_image{
+    width: 500px;
+    height: 100%;
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-image: url(/static/image/signup.jpg);
+}
+
+.content .content_signup{
+    float:right;
+    width: 460px;
+    height: 100%;
+    background-color: #FFFF;
+    color:#603913;
+    text-align: center;
+}
+.content .content_signup .content_form {
+    border-radius: 5px;
+    background-color: #FFFF;
+    padding-top: 20px;
+    padding-bottom: 20px;
+    padding-left: 70px;
+    padding-right: 70px;
+    margin-bottom: 15px;
+}
+
+.content .content_signup .content_form .sign_up_form_field {
+    border:none;
+    width: 100%;
+    padding: 12px 20px;
+    box-sizing: border-box;
+	border-radius:25px;
+    margin: 8px 0;
+    color:#603913;
+    background-color:#F8EED8 ;
+  }
+  
+.content .content_signup .content_form .sign_up_form_submit{
+    border:none;
+	padding:12px 20px;
+	border-radius:25px;
+    color:#FFFF;
+    margin-top: 20px;
+    background-color:#FEB91F ;
+    cursor: pointer;
+}
+
+.content .content_signup .content_form .sign_up_form_submit:hover{
+    background-color:#603913;
+}
+
+.content .content_signup .content_form .text{
+    margin-top: 40px;
+    color:#603913;
+}
+.content .content_signup .content_form .create{
+    color:#603913;
+    text-decoration: underline;
+}   
+
+
+
