@@ -16,20 +16,21 @@ app.use(express.urlencoded({ extended: true }));
 
 app.use(methodOverride('_method'))
 
+app.use(session({
+  secret: 'keyboard cat',
+  resave: true,
+  saveUninitialized: true/*,
+  cookie: {}*/
+}));
+
+app.use(flash());
+app.use(passport.initialize());
+app.use(passport.session());
 
 route(app);
 //app.get('/', function (req, res) {
  //  res.render('dictionary_search.ejs');
 //});
-app.use(session({
-    secret: 'keyboard cat',
-    resave: false,
-    saveUninitialized: true,
-    cookie: {}
-  }));
 
-app.use(flash());
-app.use(passport.initialize());
-app.use(passport.session());
 
 app.listen(3000, () => console.log("Server Up and running"));

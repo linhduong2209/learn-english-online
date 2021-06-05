@@ -1,7 +1,7 @@
-let bcrypt = require('bcryptjs');
+const bcrypt = require('bcrypt');
 let passport = require('passport');
 let LocalStrategy = require('passport-local').Strategy;
-let User = require('../models/user.model');
+const User = require('../models/user.model');
 
 let controller = {};
 
@@ -17,14 +17,13 @@ passport.deserializeUser(function(id, done) {
 });
 
 passport.use('local-signup', new LocalStrategy({
-    //usernameField: 'username', // map username to custom field, we call it email in our form
-    //passwordField: 'password',
+    usernameField: 'username', // map username to custom field, we call it email in our form
+    passwordField: 'password',
     passReqToCallback : true
   },
   async (req, username, password, done) => { 
-    User.findOne({ 'username' :  username }, 
-      function(err, user) {
-        
+    User.findOne({ username :  req.body.username }, 
+      function(err, user) { 
         if (err){
           console.log('Error in SignUp: '+err);
           return done(err);
@@ -33,30 +32,35 @@ passport.use('local-signup', new LocalStrategy({
             console.log('User already exists');
             return done(null, false);
         }
-        else {
+        
         let newUser = new User({
         username : req.body.username,
         email : req.body.email,
-        password : bcrypt.hashSync(password, 10)
+        password : bcrypt.hashSync(req.body.password, 10)
         });
         newUser.save();
-        console.log('Save');
-        return done(null, newUser);
-        }
+        console.log('Saved');
+        return done(null, newUser); 
       }
     );
+    
 }));
 
 passport.use('local-login', new LocalStrategy({
+    usernameField: 'username', // map username to custom field, we call it email in our form
+    passwordField: 'password',
     passReqToCallback: true
     },
     async (req, username, password, done) => { 
-      User.findOne({ username: username }, function(err, user) {
+      User.findOne({ username: req.body.username }, function(err, user) {
         if (err) { return done(err); }
         if (!user) {
+          console.log('Incorrect username.');
           return done(null, false, { message: 'Incorrect username.' });
         }
-        if (!user.validPassword(password)) {
+        let passwordValid = user && bcrypt.compareSync(password, user.password);
+        if (password != req.body.password) {
+          console.log('Incorrect password.');
           return done(null, false, { message: 'Incorrect password.' });
         }
         return done(null, user);
@@ -74,8 +78,8 @@ controller.signupPage = (req, res) =>{
 
 controller.signup = passport.authenticate('local-signup', {
     successRedirect: '/login',
-    failureRedirect: '/home'
-    /*failureFlash: {
+    failureRedirect: '/home'/*,
+    failureFlash: {
       type: 'messageFailure',
       message: 'Email already taken.'
     },
@@ -89,8 +93,8 @@ controller.signup = passport.authenticate('local-signup', {
 
 controller.login = passport.authenticate('local-login', {
     successRedirect: '/home',
-    failureRedirect: '/login'
-    /*failureFlash: {
+    failureRedirect: '/login'/*,
+    failureFlash: {
       type: 'messageFailure',
       message: 'Invalid email and/ or password.'
     },
@@ -106,5 +110,23 @@ controller.logout = (req, res, next) => {
     res.redirect('/login');
   }
 
+controller.create = (req, res) => {
+  res.render('c_u.ejs');
+}
+
+controller.store = (req, res) => {
+  //res.json(req.body);
+  //const question = new Question(req.body);
+  //question.save();
+
+  const user = new User({
+      username : req.body.id_q,
+      email : req.body.description,
+      password:req.body.answer1,
+      admin : req.body.answer2
+  });
+  user.save();
+  res.send('Saved');
+}
 module.exports = controller;
 //module.exports = new AuthController;

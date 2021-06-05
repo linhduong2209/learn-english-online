@@ -8,12 +8,12 @@
     <body>
         <div class="content">
             <div class="content_image"></div>
-            <div class="content_signup" method="POST">
+            <div class="content_signup">
                 <h1>Welcome</h1>
-                <form class="content_form">
-                    <input type="text" class="sign_up_form_field" placeholder="Username" autocomplete="off">
-                    <input type="email" class="sign_up_form_field" placeholder="Email" autocomplete="off">
-                    <input type="password" class="sign_up_form_field" placeholder="Password" autocomplete="off">
+                <form class="content_form" action="/signup" method="POST">
+                    <input type="text" id="username" name="username" class="sign_up_form_field" placeholder="Username" autocomplete="off">
+                    <input type="email" id="email" name="email"class="sign_up_form_field" placeholder="Email" autocomplete="off">
+                    <input type="password" id="password" name="password" class="sign_up_form_field" placeholder="Password" autocomplete="off">
                     <button type="submit" class="sign_up_form_submit">Sign up</button>
                 </form>
             </div>
